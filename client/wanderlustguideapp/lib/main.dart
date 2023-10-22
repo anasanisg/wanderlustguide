@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:wanderlustguideapp/services/azure_cities_service.dart';
 import 'package:wanderlustguideapp/services/service_collector.dart';
 import 'package:wanderlustguideapp/theme.dart';
+import 'package:wanderlustguideapp/utils/providers.dart';
 import 'package:wanderlustguideapp/utils/screen_config.dart';
 import 'package:wanderlustguideapp/wrapper.dart';
 
@@ -25,11 +26,14 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'anas',
-      home: const Wrapper(),
-      debugShowCheckedModeBanner: false,
-      theme: theme(),
+    return MultiProvider(
+      providers: injectProviders(),
+      child: MaterialApp(
+        title: 'anas',
+        home: const Wrapper(),
+        debugShowCheckedModeBanner: false,
+        theme: theme(),
+      ),
     );
   }
 }
