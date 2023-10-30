@@ -22,16 +22,45 @@ class CitiesList extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              title,
-              style: textTitle(kTitleBlackTextColor),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  title,
+                  style: textTitle(kTitleBlackTextColor),
+                ),
+                SizedBox(
+                    height: 40,
+                    width: 40,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(20),
+                      child: const Image(
+                          fit: BoxFit.fill,
+                          image: AssetImage(
+                            'assets/images/logo.png',
+                          )),
+                    ))
+              ],
+            ),
+            const SizedBox(
+              height: 20,
             ),
             ListView.builder(
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
               itemCount: cities.length,
               itemBuilder: (context, index) {
-                return CityTemplate(cityData: cities[index]);
+                return Column(
+                  children: [
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    CityTemplate(cityData: cities[index]),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                  ],
+                );
               },
             )
           ],

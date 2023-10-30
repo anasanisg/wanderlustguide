@@ -30,8 +30,7 @@ class Body extends StatelessWidget {
             child: Column(children: [
               value.cities.isEmpty
                   ? Container()
-                  : CitiesList(
-                      title: "Cities Information", cities: value.cities),
+                  : CitiesList(title: "NEW POSTS!", cities: value.cities),
             ]),
           ),
         );

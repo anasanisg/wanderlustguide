@@ -12,17 +12,48 @@ class CityTemplate extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(
+              children: [
+                Container(
+                  padding: const EdgeInsets.only(left: 10, top: 10),
+                  child: const CircleAvatar(
+                    radius: 20,
+                    backgroundImage: NetworkImage(
+                      'https://anasanis.me/assets/img/profile-img.jpg',
+                    ),
+                  ),
+                ),
+                Container(
+                  margin: const EdgeInsets.only(left: 10, top: 0),
+                  child: const Text(
+                    'Anas Mahfouz',
+                    style: TextStyle(
+                        color: Colors.black87,
+                        fontSize: 13,
+                        fontWeight: FontWeight.w600),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              child: Icon(Icons.more_horiz),
+            )
+          ],
+        ),
         Padding(
           padding: const EdgeInsets.all(15),
           child: InkWell(
             onTap: () {},
-            child: Container(
+            child: SizedBox(
               height: 200,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(16),
                 child: CachedNetworkImage(
                   imageUrl: cityData.cityImage,
-                  fit: BoxFit.fill,
+                  fit: BoxFit.cover,
                 ),
               ),
             ),
@@ -36,11 +67,6 @@ class CityTemplate extends StatelessWidget {
                 Text(
                   cityData.name,
                   style: textTitle(kPrimaryColor),
-                ),
-                const Icon(
-                  Icons.more_vert,
-                  size: 30,
-                  color: kNormalTextColor,
                 ),
               ]),
               Text(
@@ -68,7 +94,14 @@ class CityTemplate extends StatelessWidget {
               style: textSubtitle(kNormalTextColor),
             )
           ],
-        )
+        ),
+        const SizedBox(
+          height: 5,
+        ),
+        const Divider(),
+        const SizedBox(
+          height: 5,
+        ),
       ],
     );
   }
